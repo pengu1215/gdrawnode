@@ -9,18 +9,26 @@ var io = require('socket.io').listen(server);
 var send;
 io.sockets.on('connection', function(socket){   
     
-    socket.on('send', function (data) {
+    socket.on('send1', function (data) {
         var temp = JSON.parse(data);
-        send = {'id':temp.id, 'type':temp.type, 'x': temp.x, 'y':temp.y, 'color':temp.color, 'weight':temp.weight, 'drawing': temp.drawing};
+        send = {'id':temp.id, 'type':temp.type, 'px': temp.px, 'py':temp.py, 'x': temp.x, 'y':temp.y, 
+                 'color':temp.color, 'weight':temp.weight};
         console.log(send);
-        socket.broadcast.emit('moving', send);
+        socket.broadcast.emit('moving1', send);
+    });
+    
+    socket.on('send2', function (data) {
+        var temp = JSON.parse(data);
+        send = {'id':temp.id, 'type':temp.type, 'px': temp.px, 'py':temp.py, 'x': temp.x, 'y':temp.y, 
+                 'color':temp.color, 'weight':temp.weight};
+        console.log(send);
+        socket.broadcast.emit('moving2', send);
     });
     
     socket.on('delete', function (id) { //data=id
         console.log("delete // ", id);
         socket.broadcast.emit('erasing', id);
-    });
-    
+    });    
 });
 
 app.use(logger('dev'));
