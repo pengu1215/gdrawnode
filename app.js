@@ -9,6 +9,8 @@ var io = require('socket.io').listen(server);
 var send;
 io.sockets.on('connection', function(socket){   
     
+    console.log('*user '+socket.id+' connected');
+    
     socket.on('send1', function (data) {
         var temp = JSON.parse(data);
         send = {'id':temp.id, 'type':temp.type, 'px': temp.px, 'py':temp.py, 'x': temp.x, 'y':temp.y, 
