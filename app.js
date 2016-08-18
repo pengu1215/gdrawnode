@@ -28,7 +28,11 @@ io.sockets.on('connection', function(socket){
     socket.on('delete', function (id) { //data=id
         console.log("delete // ", id);
         socket.broadcast.emit('erasing', id);
-    });    
+    });
+    
+    socket.on('disconnect', function () {
+        console.log('*user '+socket.id+' disconnected');
+    })    
 });
 
 app.use(logger('dev'));
