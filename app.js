@@ -32,8 +32,16 @@ io.sockets.on('connection', function(socket){
         socket.broadcast.emit('erasing', id);
     });
     
+    socket.on('connect_failed', function(){
+        console.log('*user '+socket.id+' Connection Failed');
+    });
+    
+    socket.on('connect_error', function(){
+        console.log('*user '+socket.id+' Connection Error');
+    });
+    
     socket.on('disconnect', function () {
-        console.log('*user '+socket.id+' disconnected');
+        console.log('*user '+socket.id+' Disconnected');
     })    
 });
 
