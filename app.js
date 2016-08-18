@@ -40,6 +40,10 @@ io.sockets.on('connection', function(socket){
         console.log('*user '+socket.id+' Connection Error');
     });
     
+    socket.on('error', function(){
+        console.log('*user '+socket.id+' Error');
+    });
+    
     socket.on('disconnect', function () {
         console.log('*user '+socket.id+' Disconnected');
     })    
