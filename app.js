@@ -44,6 +44,10 @@ io.sockets.on('connection', function(socket){
         console.log('*user '+socket.id+' Error');
     });
     
+    socket.on('reconnection', function () {
+        console.log('*user '+socket.id+' Reconnection');
+    }) 
+    
     socket.on('disconnect', function () {
         console.log('*user '+socket.id+' Disconnected');
     })    
