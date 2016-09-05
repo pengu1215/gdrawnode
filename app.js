@@ -3,7 +3,9 @@ var path = require('path');
 var logger = require('morgan');
 
 var app = express();
-var server = app.listen(3000);
+var server = app.listen(3000, function(){
+    console.log('Server listening on Port 3000');
+});
 var io = require('socket.io').listen(server);
 
 var send;
